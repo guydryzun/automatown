@@ -22,11 +22,11 @@ public class makerScript : MonoBehaviour
         }
         for (int i = 0; i < world.Length; i++)
         {
-            GameObject newBlock = Instantiate(block, transform.position, transform.rotation);
+            Vector3 newT = new Vector3(transform.position.x + 0.1f * i, transform.position.y, transform.position.z);
+            GameObject newBlock = Instantiate(block, newT, transform.rotation);
             newBlock.SetActive(true);
             if (world[i] == 1) newBlock.GetComponent<SpriteRenderer>().color = Color.black;
             newBlock.GetComponent<blockScript>().pos = i;
-            transform.position = new Vector3(transform.position.x + 0.1f, transform.position.y, transform.position.z);
         }
         transform.position = new Vector3(p.x, p.y - 0.1f, transform.position.z);    
     }
@@ -111,14 +111,7 @@ public class makerScript : MonoBehaviour
         for (int i = 1; i < arr.Length - 1; i++)
         {
             int val = arr[i - 1] * 4 + arr[i] * 2 + arr[i + 1];
-            if (val == 0) newGen[i] = rule[7];
-            else if (val == 1) newGen[i] = rule[6];
-            else if (val == 2) newGen[i] = rule[5];
-            else if (val == 3) newGen[i] = rule[4];
-            else if (val == 4) newGen[i] = rule[3];
-            else if (val == 5) newGen[i] = rule[2];
-            else if (val == 6) newGen[i] = rule[1];
-            else newGen[i] = rule[0];
+            newGen[i] = rule[7 - val];
         }
         newGen[0] = 0;
         newGen[arr.Length - 1] = 0;
