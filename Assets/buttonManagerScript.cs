@@ -40,6 +40,11 @@ public class buttonManagerScript : MonoBehaviour
         maker.GetComponent<makerScript>().start = -1;
     }
 
+    public void wrappingEca (bool val)
+    {
+        maker.GetComponent<makerScript>().edgeWrapping = val;
+    }
+
     public void runEcaExample1 ()
     {
         maker.GetComponent<makerScript>().r = 126;

@@ -9,6 +9,7 @@ public class makerScript : MonoBehaviour
     [SerializeField] private GameObject[] loadingScreen;
     public int[] world;
     private int loading = 0;
+    public bool edgeWrapping = false;
 
     private void Start()
     {
@@ -39,7 +40,7 @@ public class makerScript : MonoBehaviour
             blockScript.before = false;
             for (int i = 0; i < len; i++)
             {
-                world = nextGen(world, r);
+                world = nextGen(world, r, edgeWrapping);
                 foreach (int n in world)
                 {
                     GameObject newBlock = pool.GetObject();
@@ -103,18 +104,44 @@ public class makerScript : MonoBehaviour
                 cam.transform.position = new Vector3(cam.transform.position.x, cam.transform.position.y - 0.1f, cam.transform.position.z);
             }
         }
+        if (Input.GetKey(KeyCode.Q))
+        {
+            if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
+            {
+                cam.GetComponent<Camera>().orthographicSize += 0.2f;
+            }
+            else
+            {
+                cam.GetComponent<Camera>().orthographicSize += 0.1f;
+            }
+        }
+        if (Input.GetKey(KeyCode.E))
+        {
+            if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
+            {
+                cam.GetComponent<Camera>().orthographicSize -= 0.2f;
+            }
+            else
+            {
+                cam.GetComponent<Camera>().orthographicSize -= 0.1f;
+            }
+        }
     }
 
-    public static int[] nextGen(int[] arr, int r)
+    public static int[] nextGen(int[] arr, int r, bool edgeWrapping)
     {
         int[] newGen = new int[arr.Length], rule = makeRule(r);
         for (int i = 1; i < arr.Length - 1; i++)
         {
-            int val = arr[i - 1] * 4 + arr[i] * 2 + arr[i + 1];
-            newGen[i] = rule[7 - val];
+            newGen[i] = rule[7 - arr[i - 1] * 4 - arr[i] * 2 - arr[i + 1]];
         }
         newGen[0] = 0;
         newGen[arr.Length - 1] = 0;
+        if (edgeWrapping)
+        {
+            newGen[0] = rule[7 - arr[arr.Length - 1] * 4 - arr[0] * 2 - arr[1]];
+            newGen[arr.Length - 1] = rule[7 - arr[arr.Length - 2] * 4 - arr[arr.Length - 1] * 2 - arr[0]];
+        }
         return newGen;
     }
 
