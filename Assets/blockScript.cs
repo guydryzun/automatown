@@ -3,9 +3,11 @@ using UnityEngine;
 
 public class blockScript : MonoBehaviour
 {
-    public static Boolean before = true;
-    [SerializeField] private makerScript maker;
-    public int pos;
+    public static Boolean before = true, pressed = false;
+    private bool switched = false;
+    [SerializeField] private makerScript ecaMaker;
+    [SerializeField] private golMakerScript golMaker;
+    public int pos, pos2, type;
 
     void Update()
     {
@@ -22,19 +24,13 @@ public class blockScript : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if (before)
-        {
-            if (GetComponent<SpriteRenderer>().color.Equals(Color.white))
-            {
-                GetComponent<SpriteRenderer>().color = Color.black;
-                maker.world[pos] = 1;
-            }
-            else
-            {
-                GetComponent<SpriteRenderer>().color = Color.white;
-                maker.world[pos] = 0;
-            }
-        }
+        pressed = true;
+    }
+
+    void OnMouseUp()
+    {
+        pressed = false;
+        switched = false;
     }
 
     private void OnMouseOver()
@@ -42,6 +38,22 @@ public class blockScript : MonoBehaviour
         if (transform.Find("highlight").gameObject.activeSelf == false)
         {
             transform.Find("highlight").gameObject.SetActive(true);
+        }
+        if (pressed && !switched && (before || type == 2))
+        {
+            if (GetComponent<SpriteRenderer>().color.Equals(Color.white))
+            {
+                GetComponent<SpriteRenderer>().color = Color.black;
+                if (type == 1) ecaMaker.world[pos] = 1;
+                else if (type == 2) golMaker.world[pos][pos2] = 1;
+            }
+            else
+            {
+                GetComponent<SpriteRenderer>().color = Color.white;
+                if (type == 1) ecaMaker.world[pos] = 0;
+                else if (type == 2) golMaker.world[pos][pos2] = 0;
+            }
+            switched = true;
         }
     }
 

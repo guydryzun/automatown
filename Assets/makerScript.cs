@@ -128,7 +128,7 @@ public class makerScript : MonoBehaviour
         }
     }
 
-    public static int[] nextGen(int[] arr, int r, bool edgeWrapping)
+    private static int[] nextGen(int[] arr, int r, bool edgeWrapping)
     {
         int[] newGen = new int[arr.Length], rule = makeRule(r);
         for (int i = 1; i < arr.Length - 1; i++)
@@ -145,7 +145,7 @@ public class makerScript : MonoBehaviour
         return newGen;
     }
 
-    public static int[] makeRule(int n)
+    private static int[] makeRule(int n)
     {
         int index = 0, cur = 0;
         int[] rule = new int[8];
