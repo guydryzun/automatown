@@ -6,6 +6,8 @@ public class golMakerScript : MonoBehaviour
     private GameObject[][] block;
     public GameObject objectPool, cam;
     public int len;
+    private float timer = 0f;
+    private bool isRunning = false;
 
 
     private void Start()
@@ -24,12 +26,58 @@ public class golMakerScript : MonoBehaviour
                 block[i][j].transform.rotation = transform.rotation;
                 block[i][j].SetActive(true);
                 block[i][j].GetComponent<blockScript>().type = 2;
+                block[i][j].GetComponent<blockScript>().pos = i;
+                block[i][j].GetComponent<blockScript>().pos2 = j;
             }
         }
     }
 
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Return))
+        {
+            isRunning = !isRunning;
+        }
+        if (isRunning)
+        {
+            timer += Time.deltaTime;
+            if (timer >= 0.5f)
+            {
+                world = nextGen(world);
+                for (int i = 0; i < len; i++)
+                {
+                    for (int j = 0; j < len; j++)
+                    {
+                        if (world[i][j] == 1) block[i][j].GetComponent<SpriteRenderer>().color = Color.black;
+                        else block[i][j].GetComponent<SpriteRenderer>().color = Color.white;
+                    }
+                }
+                timer = 0f;
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            world = nextGen(world);
+                for (int i = 0; i < len; i++)
+                {
+                    for (int j = 0; j < len; j++)
+                    {
+                        if (world[i][j] == 1) block[i][j].GetComponent<SpriteRenderer>().color = Color.black;
+                        else block[i][j].GetComponent<SpriteRenderer>().color = Color.white;
+                    }
+                }
+        }
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            for (int i = 0; i < len; i++)
+            {
+                for (int j = 0; j < len; j++)
+                {
+                    world[i][j] = 0;
+                    block[i][j].GetComponent<SpriteRenderer>().color = Color.white;
+                }
+            }
+        }
         if (Input.GetKey(KeyCode.RightArrow))
         {
             if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift)) 
