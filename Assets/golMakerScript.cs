@@ -2,18 +2,22 @@ using UnityEngine;
 
 public class golMakerScript : MonoBehaviour
 {
-    public int[][] world;
+    public int[][] world = null, origin = null;
     private GameObject[][] block;
     public GameObject objectPool, cam;
     public int len;
-    private float timer = 0f;
+    private float timer = 0f, speed = 0.5f;
     private bool isRunning = false;
 
 
     private void Start()
     {
-        world = new int[len][];
-        for (int i = 0; i < len; i++) world[i] = new int[len];
+        if (world == null)
+        {
+            world = new int[len][];
+            for (int i = 0; i < len; i++) world[i] = new int[len];
+        }
+        origin = world;
         block = new GameObject[len][];
         for (int i = 0; i < len; i++) block[i] = new GameObject[len];
         for (int i = 0; i < len; i++)
@@ -21,13 +25,14 @@ public class golMakerScript : MonoBehaviour
             for (int j = 0; j < len; j++)
             {
                 Vector3 newT = new Vector3(transform.position.x + 0.1f * j, transform.position.y - 0.1f * i, transform.position.z);
-                block[i][j] = objectPool.GetComponent<ObjectPool>().GetObject();
-                block[i][j].transform.position = newT;
-                block[i][j].transform.rotation = transform.rotation;
-                block[i][j].SetActive(true);
-                block[i][j].GetComponent<blockScript>().type = 2;
-                block[i][j].GetComponent<blockScript>().pos = i;
-                block[i][j].GetComponent<blockScript>().pos2 = j;
+                block[j][i] = objectPool.GetComponent<ObjectPool>().GetObject();
+                block[j][i].transform.position = newT;
+                block[j][i].transform.rotation = transform.rotation;
+                block[j][i].SetActive(true);
+                block[j][i].GetComponent<blockScript>().type = 2;
+                block[j][i].GetComponent<blockScript>().pos = j;
+                block[j][i].GetComponent<blockScript>().pos2 = i;
+                if (world[j][i] == 1) block[j][i].GetComponent<SpriteRenderer>().color = Color.black;
             }
         }
     }
@@ -41,15 +46,15 @@ public class golMakerScript : MonoBehaviour
         if (isRunning)
         {
             timer += Time.deltaTime;
-            if (timer >= 0.5f)
+            if (timer >= speed)
             {
                 world = nextGen(world);
                 for (int i = 0; i < len; i++)
                 {
                     for (int j = 0; j < len; j++)
                     {
-                        if (world[i][j] == 1) block[i][j].GetComponent<SpriteRenderer>().color = Color.black;
-                        else block[i][j].GetComponent<SpriteRenderer>().color = Color.white;
+                        if (world[j][i] == 1) block[j][i].GetComponent<SpriteRenderer>().color = Color.black;
+                        else block[j][i].GetComponent<SpriteRenderer>().color = Color.white;
                     }
                 }
                 timer = 0f;
@@ -73,10 +78,21 @@ public class golMakerScript : MonoBehaviour
             {
                 for (int j = 0; j < len; j++)
                 {
-                    world[i][j] = 0;
-                    block[i][j].GetComponent<SpriteRenderer>().color = Color.white;
+                    world[j][i] = origin[j][i];
+                    if (world[j][i] == 1) block[j][i].GetComponent<SpriteRenderer>().color = Color.black;
+                    else block[j][i].GetComponent<SpriteRenderer>().color = Color.white;
                 }
             }
+        }
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            speed += 0.1f;
+            if (speed > 5f) speed = 5f;
+        }
+        if (Input.GetKeyDown(KeyCode.G))
+        {
+            speed -= 0.1f;
+            if (speed < 0.05f) speed = 0.05f;
         }
         if (Input.GetKey(KeyCode.RightArrow))
         {
