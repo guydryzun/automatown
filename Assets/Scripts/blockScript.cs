@@ -7,6 +7,7 @@ public class blockScript : MonoBehaviour
     private bool switched = false;
     [SerializeField] private makerScript ecaMaker;
     [SerializeField] private golMakerScript golMaker;
+    [SerializeField] private llMakerScript llMaker;
     public int pos, pos2, type;
 
     void Update()
@@ -19,7 +20,7 @@ public class blockScript : MonoBehaviour
             Destroy(transform.Find("highlight").gameObject);
             Destroy(GetComponent<blockScript>());
         }
-        
+        if (!pressed && switched) switched = false;
     }
 
     private void OnMouseDown()
@@ -46,12 +47,14 @@ public class blockScript : MonoBehaviour
                 GetComponent<SpriteRenderer>().color = Color.black;
                 if (type == 1) ecaMaker.world[pos] = 1;
                 else if (type == 2) golMaker.world[pos][pos2] = 1;
+                else if (type == 3) llMaker.world[pos][pos2] = 1;
             }
             else
             {
                 GetComponent<SpriteRenderer>().color = Color.white;
                 if (type == 1) ecaMaker.world[pos] = 0;
                 else if (type == 2) golMaker.world[pos][pos2] = 0;
+                else if (type == 3) llMaker.world[pos][pos2] = 0;
             }
             switched = true;
         }
