@@ -3,8 +3,8 @@ using UnityEngine;
 
 public class llMakerScript : MonoBehaviour
 {
-    public int[][] world = null, origin = null;
-    public List<int> survive, born;
+    public int[][] world = null, origin = null, neighbourhood = null;
+    [SerializeField]public List<int> survive, born, neighbourhoodList = new List<int> { 1, 1, 1, 2, 1, 3, 2, 1, 2, 3, 3, 1, 3, 2, 3, 3 };
     private GameObject[][] block;
     public GameObject objectPool, cam;
     public int len;
@@ -20,6 +20,12 @@ public class llMakerScript : MonoBehaviour
             for (int i = 0; i < len; i++) world[i] = new int[len];
         }
         origin = world;
+        neighbourhood = new int[5][];
+        for (int i = 0; i < 5; i++) neighbourhood[i] = new int[5];
+        for (int i = 0; i < neighbourhoodList.Count; i += 2)
+        {
+            neighbourhood[neighbourhoodList[i]][neighbourhoodList[i + 1]] = 1;
+        }
         block = new GameObject[len][];
         for (int i = 0; i < len; i++) block[i] = new GameObject[len];
         for (int i = 0; i < len; i++)
@@ -65,24 +71,37 @@ public class llMakerScript : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.F))
         {
             world = nextGen(world);
-                for (int i = 0; i < len; i++)
-                {
-                    for (int j = 0; j < len; j++)
-                    {
-                        if (world[i][j] == 1) block[i][j].GetComponent<SpriteRenderer>().color = Color.black;
-                        else block[i][j].GetComponent<SpriteRenderer>().color = Color.white;
-                    }
-                }
-        }
-        if (Input.GetKeyDown(KeyCode.R))
-        {
             for (int i = 0; i < len; i++)
             {
                 for (int j = 0; j < len; j++)
                 {
+                    if (world[i][j] == 1) block[i][j].GetComponent<SpriteRenderer>().color = Color.black;
+                    else block[i][j].GetComponent<SpriteRenderer>().color = Color.white;
+                }
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            bool dif = false;
+            for (int i = 0; i < len; i++)
+            {
+                for (int j = 0; j < len; j++)
+                {
+                    if (world[j][i] != origin[j][i]) dif = true;
                     world[j][i] = origin[j][i];
                     if (world[j][i] == 1) block[j][i].GetComponent<SpriteRenderer>().color = Color.black;
                     else block[j][i].GetComponent<SpriteRenderer>().color = Color.white;
+                }
+            }
+            if (!dif)
+            {
+                for (int i = 0; i < len; i++)
+                {
+                    for (int j = 0; j < len; j++)
+                    {
+                        world[j][i] = 0;
+                        block[j][i].GetComponent<SpriteRenderer>().color = Color.white;
+                    }
                 }
             }
         }
@@ -168,11 +187,18 @@ public class llMakerScript : MonoBehaviour
     {
         int[][] newGen = new int[arr.Length][];
         for (int i = 0; i < arr.Length; i++) newGen[i] = new int[arr[i].Length];
-        for (int i = 1; i < arr.Length - 1; i++)
+        for (int i = 2; i < arr.Length - 2; i++)
         {
-            for (int j = 1; j < arr[i].Length - 1; j++)
+            for (int j = 2; j < arr[i].Length - 2; j++)
             {
-                int sum = arr[i - 1][j - 1] + arr[i - 1][j] + arr[i - 1][j + 1] + arr[i][j - 1] + arr[i][j + 1] + arr[i + 1][j - 1] + arr[i + 1][j] + arr[i + 1][j + 1];
+                int sum = 0;
+                for (int k = -2; k < 3; k++)
+                {
+                    for (int l = -2; l < 3; l++)
+                    {
+                        if (neighbourhood[k + 2][l + 2] == 1) sum += arr[i + k][j + l];
+                    }
+                }
                 if (arr[i][j] == 1)
                 {
                     newGen[i][j] = 0;

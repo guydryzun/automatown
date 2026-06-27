@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class golMakerScript : MonoBehaviour
+public class wwMakerScript : MonoBehaviour
 {
     public int[][] world = null, origin = null;
     private GameObject[][] block;
@@ -10,7 +10,8 @@ public class golMakerScript : MonoBehaviour
     private bool isRunning = false;
 
 
-    private void Start()
+
+    void Start()
     {
         if (world == null)
         {
@@ -29,10 +30,14 @@ public class golMakerScript : MonoBehaviour
                 block[j][i].transform.position = newT;
                 block[j][i].transform.rotation = transform.rotation;
                 block[j][i].SetActive(true);
-                block[j][i].GetComponent<blockScript>().type = 2;
+                block[j][i].GetComponent<blockScript>().type = 4;
                 block[j][i].GetComponent<blockScript>().pos = j;
                 block[j][i].GetComponent<blockScript>().pos2 = i;
-                if (world[j][i] == 1) block[j][i].GetComponent<SpriteRenderer>().color = Color.black;
+                if (world[j][i] == 0) block[j][i].GetComponent<SpriteRenderer>().color = Color.black;
+                else if (world[j][i] == 1) block[j][i].GetComponent<SpriteRenderer>().color = Color.yellow;
+                else if (world[j][i] == 2) block[j][i].GetComponent<SpriteRenderer>().color = Color.blue;
+                else block[j][i].GetComponent<SpriteRenderer>().color = Color.red;
+
             }
         }
     }
@@ -53,8 +58,10 @@ public class golMakerScript : MonoBehaviour
                 {
                     for (int j = 0; j < len; j++)
                     {
-                        if (world[j][i] == 1) block[j][i].GetComponent<SpriteRenderer>().color = Color.black;
-                        else block[j][i].GetComponent<SpriteRenderer>().color = Color.white;
+                        if (world[j][i] == 0) block[j][i].GetComponent<SpriteRenderer>().color = Color.black;
+                        else if (world[j][i] == 1) block[j][i].GetComponent<SpriteRenderer>().color = Color.yellow;
+                        else if (world[j][i] == 2) block[j][i].GetComponent<SpriteRenderer>().color = Color.blue;
+                        else block[j][i].GetComponent<SpriteRenderer>().color = Color.red;
                     }
                 }
                 timer = 0f;
@@ -183,10 +190,22 @@ public class golMakerScript : MonoBehaviour
         {
             for (int j = 1; j < arr[i].Length - 1; j++)
             {
-                int sum = arr[i - 1][j - 1] + arr[i - 1][j] + arr[i - 1][j + 1] + arr[i][j - 1] + arr[i][j + 1] + arr[i + 1][j - 1] + arr[i + 1][j] + arr[i + 1][j + 1];
-                if (sum == 3) newGen[i][j] = 1;
-                else if (sum == 2) newGen[i][j] = arr[i][j];
-                else newGen[i][j] = 0;
+                if (arr[j][i] == 2) newGen[j][i] = 3;
+                else if (arr[j][i] == 3) newGen[j][i] = 1;
+                else if (arr[j][i] == 0) newGen[j][i] = 0;
+                else
+                {
+                    int count = 0;
+                    for (int k = -1; k <= 1; k++)
+                    {
+                        for (int l = -1; l <= 1; l++)
+                        {
+                            if (arr[j + k][i + l] == 2) count++;
+                        }
+                    }
+                    if (count == 1 || count == 2) newGen[j][i] = 2;
+                    else newGen[j][i] = 1;
+                }
             }
         }
         return newGen;

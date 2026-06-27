@@ -1,9 +1,10 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class buttonManagerScript : MonoBehaviour
 {
-    [SerializeField] private GameObject mainUI, ecaUI, golUI, llUI;
-    [SerializeField] private GameObject ecaMaker, golMaker, llMaker;
+    [SerializeField] private GameObject mainUI, ecaUI, golUI, llUI, wwUi;
+    [SerializeField] private GameObject ecaMaker, golMaker, llMaker, wwMaker;
 
     public void openEcaUi ()
     {
@@ -263,6 +264,510 @@ public class buttonManagerScript : MonoBehaviour
         else llMaker.GetComponent<llMakerScript>().survive.Remove(8);
     }
 
+    public void add11Ll (bool val)
+    {
+        int x = 0, y = 0;
+        if (val)
+        {
+            llMaker.GetComponent<llMakerScript>().neighbourhoodList.Add(x);
+            llMaker.GetComponent<llMakerScript>().neighbourhoodList.Add(y);
+        } 
+        else {
+            for (int i = 0; i < llMaker.GetComponent<llMakerScript>().neighbourhoodList.Count; i += 2)
+            {
+                if (llMaker.GetComponent<llMakerScript>().neighbourhoodList[i] == x && llMaker.GetComponent<llMakerScript>().neighbourhoodList[i + 1] == y)
+                {
+                    llMaker.GetComponent<llMakerScript>().neighbourhoodList.RemoveAt(i);
+                    llMaker.GetComponent<llMakerScript>().neighbourhoodList.RemoveAt(i);
+                    break;
+                }
+            }
+        }
+    }
+
+    public void add21Ll (bool val)
+    {
+        int x = 1, y = 0;
+        if (val)
+        {
+            llMaker.GetComponent<llMakerScript>().neighbourhoodList.Add(x);
+            llMaker.GetComponent<llMakerScript>().neighbourhoodList.Add(y);
+        } 
+        else {
+            for (int i = 0; i < llMaker.GetComponent<llMakerScript>().neighbourhoodList.Count; i += 2)
+            {
+                if (llMaker.GetComponent<llMakerScript>().neighbourhoodList[i] == x && llMaker.GetComponent<llMakerScript>().neighbourhoodList[i + 1] == y)
+                {
+                    llMaker.GetComponent<llMakerScript>().neighbourhoodList.RemoveAt(i);
+                    llMaker.GetComponent<llMakerScript>().neighbourhoodList.RemoveAt(i);
+                    break;
+                }
+            }
+        }
+    }
+
+    public void add31Ll (bool val)
+    {
+        int x = 2, y = 0;
+        if (val)
+        {
+            llMaker.GetComponent<llMakerScript>().neighbourhoodList.Add(x);
+            llMaker.GetComponent<llMakerScript>().neighbourhoodList.Add(y);
+        } 
+        else {
+            for (int i = 0; i < llMaker.GetComponent<llMakerScript>().neighbourhoodList.Count; i += 2)
+            {
+                if (llMaker.GetComponent<llMakerScript>().neighbourhoodList[i] == x && llMaker.GetComponent<llMakerScript>().neighbourhoodList[i + 1] == y)
+                {
+                    llMaker.GetComponent<llMakerScript>().neighbourhoodList.RemoveAt(i);
+                    llMaker.GetComponent<llMakerScript>().neighbourhoodList.RemoveAt(i);
+                    break;
+                }
+            }
+        }
+    }
+
+    public void add41Ll (bool val)
+    {
+        int x = 3, y = 0;
+        if (val)
+        {
+            llMaker.GetComponent<llMakerScript>().neighbourhoodList.Add(x);
+            llMaker.GetComponent<llMakerScript>().neighbourhoodList.Add(y);
+        } 
+        else {
+            for (int i = 0; i < llMaker.GetComponent<llMakerScript>().neighbourhoodList.Count; i += 2)
+            {
+                if (llMaker.GetComponent<llMakerScript>().neighbourhoodList[i] == x && llMaker.GetComponent<llMakerScript>().neighbourhoodList[i + 1] == y)
+                {
+                    llMaker.GetComponent<llMakerScript>().neighbourhoodList.RemoveAt(i);
+                    llMaker.GetComponent<llMakerScript>().neighbourhoodList.RemoveAt(i);
+                    break;
+                }
+            }
+        }
+    }
+
+    public void add51Ll (bool val)
+    {
+        int x = 4, y = 0;
+        if (val)
+        {
+            llMaker.GetComponent<llMakerScript>().neighbourhoodList.Add(x);
+            llMaker.GetComponent<llMakerScript>().neighbourhoodList.Add(y);
+        } 
+        else {
+            for (int i = 0; i < llMaker.GetComponent<llMakerScript>().neighbourhoodList.Count; i += 2)
+            {
+                if (llMaker.GetComponent<llMakerScript>().neighbourhoodList[i] == x && llMaker.GetComponent<llMakerScript>().neighbourhoodList[i + 1] == y)
+                {
+                    llMaker.GetComponent<llMakerScript>().neighbourhoodList.RemoveAt(i);
+                    llMaker.GetComponent<llMakerScript>().neighbourhoodList.RemoveAt(i);
+                    break;
+                }
+            }
+        }
+    }
+
+    public void add12Ll (bool val)
+    {
+        int x = 0, y = 1;
+        if (val)
+        {
+            llMaker.GetComponent<llMakerScript>().neighbourhoodList.Add(x);
+            llMaker.GetComponent<llMakerScript>().neighbourhoodList.Add(y);
+        } 
+        else {
+            for (int i = 0; i < llMaker.GetComponent<llMakerScript>().neighbourhoodList.Count; i += 2)
+            {
+                if (llMaker.GetComponent<llMakerScript>().neighbourhoodList[i] == x && llMaker.GetComponent<llMakerScript>().neighbourhoodList[i + 1] == y)
+                {
+                    llMaker.GetComponent<llMakerScript>().neighbourhoodList.RemoveAt(i);
+                    llMaker.GetComponent<llMakerScript>().neighbourhoodList.RemoveAt(i);
+                    break;
+                }
+            }
+        }
+    }
+
+    public void add22Ll (bool val)
+    {
+        int x = 1, y = 1;
+        if (val)
+        {
+            llMaker.GetComponent<llMakerScript>().neighbourhoodList.Add(x);
+            llMaker.GetComponent<llMakerScript>().neighbourhoodList.Add(y);
+        } 
+        else {
+            for (int i = 0; i < llMaker.GetComponent<llMakerScript>().neighbourhoodList.Count; i += 2)
+            {
+                if (llMaker.GetComponent<llMakerScript>().neighbourhoodList[i] == x && llMaker.GetComponent<llMakerScript>().neighbourhoodList[i + 1] == y)
+                {
+                    llMaker.GetComponent<llMakerScript>().neighbourhoodList.RemoveAt(i);
+                    llMaker.GetComponent<llMakerScript>().neighbourhoodList.RemoveAt(i);
+                    break;
+                }
+            }
+        }
+    }
+
+    public void add32Ll (bool val)
+    {
+        int x = 2, y = 1;
+        if (val)
+        {
+            llMaker.GetComponent<llMakerScript>().neighbourhoodList.Add(x);
+            llMaker.GetComponent<llMakerScript>().neighbourhoodList.Add(y);
+        } 
+        else {
+            for (int i = 0; i < llMaker.GetComponent<llMakerScript>().neighbourhoodList.Count; i += 2)
+            {
+                if (llMaker.GetComponent<llMakerScript>().neighbourhoodList[i] == x && llMaker.GetComponent<llMakerScript>().neighbourhoodList[i + 1] == y)
+                {
+                    llMaker.GetComponent<llMakerScript>().neighbourhoodList.RemoveAt(i);
+                    llMaker.GetComponent<llMakerScript>().neighbourhoodList.RemoveAt(i);
+                    break;
+                }
+            }
+        }
+    }
+
+    public void add42Ll (bool val)
+    {
+        int x = 3, y = 1;
+        if (val)
+        {
+            llMaker.GetComponent<llMakerScript>().neighbourhoodList.Add(x);
+            llMaker.GetComponent<llMakerScript>().neighbourhoodList.Add(y);
+        } 
+        else {
+            for (int i = 0; i < llMaker.GetComponent<llMakerScript>().neighbourhoodList.Count; i += 2)
+            {
+                if (llMaker.GetComponent<llMakerScript>().neighbourhoodList[i] == x && llMaker.GetComponent<llMakerScript>().neighbourhoodList[i + 1] == y)
+                {
+                    llMaker.GetComponent<llMakerScript>().neighbourhoodList.RemoveAt(i);
+                    llMaker.GetComponent<llMakerScript>().neighbourhoodList.RemoveAt(i);
+                    break;
+                }
+            }
+        }
+    }
+
+    public void add52Ll (bool val)
+    {
+        int x = 4, y = 1;
+        if (val)
+        {
+            llMaker.GetComponent<llMakerScript>().neighbourhoodList.Add(x);
+            llMaker.GetComponent<llMakerScript>().neighbourhoodList.Add(y);
+        } 
+        else {
+            for (int i = 0; i < llMaker.GetComponent<llMakerScript>().neighbourhoodList.Count; i += 2)
+            {
+                if (llMaker.GetComponent<llMakerScript>().neighbourhoodList[i] == x && llMaker.GetComponent<llMakerScript>().neighbourhoodList[i + 1] == y)
+                {
+                    llMaker.GetComponent<llMakerScript>().neighbourhoodList.RemoveAt(i);
+                    llMaker.GetComponent<llMakerScript>().neighbourhoodList.RemoveAt(i);
+                    break;
+                }
+            }
+        }
+    }
+
+    public void add13Ll (bool val)
+    {
+        int x = 0, y = 2;
+        if (val)
+        {
+            llMaker.GetComponent<llMakerScript>().neighbourhoodList.Add(x);
+            llMaker.GetComponent<llMakerScript>().neighbourhoodList.Add(y);
+        } 
+        else {
+            for (int i = 0; i < llMaker.GetComponent<llMakerScript>().neighbourhoodList.Count; i += 2)
+            {
+                if (llMaker.GetComponent<llMakerScript>().neighbourhoodList[i] == x && llMaker.GetComponent<llMakerScript>().neighbourhoodList[i + 1] == y)
+                {
+                    llMaker.GetComponent<llMakerScript>().neighbourhoodList.RemoveAt(i);
+                    llMaker.GetComponent<llMakerScript>().neighbourhoodList.RemoveAt(i);
+                    break;
+                }
+            }
+        }
+    }
+
+    public void add23Ll (bool val)
+    {
+        int x = 1, y = 2;
+        if (val)
+        {
+            llMaker.GetComponent<llMakerScript>().neighbourhoodList.Add(x);
+            llMaker.GetComponent<llMakerScript>().neighbourhoodList.Add(y);
+        } 
+        else {
+            for (int i = 0; i < llMaker.GetComponent<llMakerScript>().neighbourhoodList.Count; i += 2)
+            {
+                if (llMaker.GetComponent<llMakerScript>().neighbourhoodList[i] == x && llMaker.GetComponent<llMakerScript>().neighbourhoodList[i + 1] == y)
+                {
+                    llMaker.GetComponent<llMakerScript>().neighbourhoodList.RemoveAt(i);
+                    llMaker.GetComponent<llMakerScript>().neighbourhoodList.RemoveAt(i);
+                    break;
+                }
+            }
+        }
+    }
+
+    public void add43Ll (bool val)
+    {
+        int x = 3, y = 2;
+        if (val)
+        {
+            llMaker.GetComponent<llMakerScript>().neighbourhoodList.Add(x);
+            llMaker.GetComponent<llMakerScript>().neighbourhoodList.Add(y);
+        } 
+        else {
+            for (int i = 0; i < llMaker.GetComponent<llMakerScript>().neighbourhoodList.Count; i += 2)
+            {
+                if (llMaker.GetComponent<llMakerScript>().neighbourhoodList[i] == x && llMaker.GetComponent<llMakerScript>().neighbourhoodList[i + 1] == y)
+                {
+                    llMaker.GetComponent<llMakerScript>().neighbourhoodList.RemoveAt(i);
+                    llMaker.GetComponent<llMakerScript>().neighbourhoodList.RemoveAt(i);
+                    break;
+                }
+            }
+        }
+    }
+
+    public void add53Ll (bool val)
+    {
+        int x = 4, y = 2;
+        if (val)
+        {
+            llMaker.GetComponent<llMakerScript>().neighbourhoodList.Add(x);
+            llMaker.GetComponent<llMakerScript>().neighbourhoodList.Add(y);
+        } 
+        else {
+            for (int i = 0; i < llMaker.GetComponent<llMakerScript>().neighbourhoodList.Count; i += 2)
+            {
+                if (llMaker.GetComponent<llMakerScript>().neighbourhoodList[i] == x && llMaker.GetComponent<llMakerScript>().neighbourhoodList[i + 1] == y)
+                {
+                    llMaker.GetComponent<llMakerScript>().neighbourhoodList.RemoveAt(i);
+                    llMaker.GetComponent<llMakerScript>().neighbourhoodList.RemoveAt(i);
+                    break;
+                }
+            }
+        }
+    }
+
+    public void add14Ll (bool val)
+    {
+        int x = 0, y = 3;
+        if (val)
+        {
+            llMaker.GetComponent<llMakerScript>().neighbourhoodList.Add(x);
+            llMaker.GetComponent<llMakerScript>().neighbourhoodList.Add(y);
+        } 
+        else {
+            for (int i = 0; i < llMaker.GetComponent<llMakerScript>().neighbourhoodList.Count; i += 2)
+            {
+                if (llMaker.GetComponent<llMakerScript>().neighbourhoodList[i] == x && llMaker.GetComponent<llMakerScript>().neighbourhoodList[i + 1] == y)
+                {
+                    llMaker.GetComponent<llMakerScript>().neighbourhoodList.RemoveAt(i);
+                    llMaker.GetComponent<llMakerScript>().neighbourhoodList.RemoveAt(i);
+                    break;
+                }
+            }
+        }
+    }
+
+    public void add24Ll (bool val)
+    {
+        int x = 1, y = 3;
+        if (val)
+        {
+            llMaker.GetComponent<llMakerScript>().neighbourhoodList.Add(x);
+            llMaker.GetComponent<llMakerScript>().neighbourhoodList.Add(y);
+        } 
+        else {
+            for (int i = 0; i < llMaker.GetComponent<llMakerScript>().neighbourhoodList.Count; i += 2)
+            {
+                if (llMaker.GetComponent<llMakerScript>().neighbourhoodList[i] == x && llMaker.GetComponent<llMakerScript>().neighbourhoodList[i + 1] == y)
+                {
+                    llMaker.GetComponent<llMakerScript>().neighbourhoodList.RemoveAt(i);
+                    llMaker.GetComponent<llMakerScript>().neighbourhoodList.RemoveAt(i);
+                    break;
+                }
+            }
+        }
+    }
+
+    public void add34Ll (bool val)
+    {
+        int x = 2, y = 3;
+        if (val)
+        {
+            llMaker.GetComponent<llMakerScript>().neighbourhoodList.Add(x);
+            llMaker.GetComponent<llMakerScript>().neighbourhoodList.Add(y);
+        } 
+        else {
+            for (int i = 0; i < llMaker.GetComponent<llMakerScript>().neighbourhoodList.Count; i += 2)
+            {
+                if (llMaker.GetComponent<llMakerScript>().neighbourhoodList[i] == x && llMaker.GetComponent<llMakerScript>().neighbourhoodList[i + 1] == y)
+                {
+                    llMaker.GetComponent<llMakerScript>().neighbourhoodList.RemoveAt(i);
+                    llMaker.GetComponent<llMakerScript>().neighbourhoodList.RemoveAt(i);
+                    break;
+                }
+            }
+        }
+    }
+
+    public void add44Ll (bool val)
+    {
+        int x = 3, y = 3;
+        if (val)
+        {
+            llMaker.GetComponent<llMakerScript>().neighbourhoodList.Add(x);
+            llMaker.GetComponent<llMakerScript>().neighbourhoodList.Add(y);
+        } 
+        else {
+            for (int i = 0; i < llMaker.GetComponent<llMakerScript>().neighbourhoodList.Count; i += 2)
+            {
+                if (llMaker.GetComponent<llMakerScript>().neighbourhoodList[i] == x && llMaker.GetComponent<llMakerScript>().neighbourhoodList[i + 1] == y)
+                {
+                    llMaker.GetComponent<llMakerScript>().neighbourhoodList.RemoveAt(i);
+                    llMaker.GetComponent<llMakerScript>().neighbourhoodList.RemoveAt(i);
+                    break;
+                }
+            }
+        }
+    }
+
+    public void add54Ll (bool val)
+    {
+        int x = 4, y = 3;
+        if (val)
+        {
+            llMaker.GetComponent<llMakerScript>().neighbourhoodList.Add(x);
+            llMaker.GetComponent<llMakerScript>().neighbourhoodList.Add(y);
+        } 
+        else {
+            for (int i = 0; i < llMaker.GetComponent<llMakerScript>().neighbourhoodList.Count; i += 2)
+            {
+                if (llMaker.GetComponent<llMakerScript>().neighbourhoodList[i] == x && llMaker.GetComponent<llMakerScript>().neighbourhoodList[i + 1] == y)
+                {
+                    llMaker.GetComponent<llMakerScript>().neighbourhoodList.RemoveAt(i);
+                    llMaker.GetComponent<llMakerScript>().neighbourhoodList.RemoveAt(i);
+                    break;
+                }
+            }
+        }
+    }
+
+        public void add15Ll (bool val)
+    {
+        int x = 0, y = 4;
+        if (val)
+        {
+            llMaker.GetComponent<llMakerScript>().neighbourhoodList.Add(x);
+            llMaker.GetComponent<llMakerScript>().neighbourhoodList.Add(y);
+        } 
+        else {
+            for (int i = 0; i < llMaker.GetComponent<llMakerScript>().neighbourhoodList.Count; i += 2)
+            {
+                if (llMaker.GetComponent<llMakerScript>().neighbourhoodList[i] == x && llMaker.GetComponent<llMakerScript>().neighbourhoodList[i + 1] == y)
+                {
+                    llMaker.GetComponent<llMakerScript>().neighbourhoodList.RemoveAt(i);
+                    llMaker.GetComponent<llMakerScript>().neighbourhoodList.RemoveAt(i);
+                    break;
+                }
+            }
+        }
+    }
+
+    public void add25Ll (bool val)
+    {
+        int x = 1, y = 4;
+        if (val)
+        {
+            llMaker.GetComponent<llMakerScript>().neighbourhoodList.Add(x);
+            llMaker.GetComponent<llMakerScript>().neighbourhoodList.Add(y);
+        } 
+        else {
+            for (int i = 0; i < llMaker.GetComponent<llMakerScript>().neighbourhoodList.Count; i += 2)
+            {
+                if (llMaker.GetComponent<llMakerScript>().neighbourhoodList[i] == x && llMaker.GetComponent<llMakerScript>().neighbourhoodList[i + 1] == y)
+                {
+                    llMaker.GetComponent<llMakerScript>().neighbourhoodList.RemoveAt(i);
+                    llMaker.GetComponent<llMakerScript>().neighbourhoodList.RemoveAt(i);
+                    break;
+                }
+            }
+        }
+    }
+
+    public void add35Ll (bool val)
+    {
+        int x = 2, y = 4;
+        if (val)
+        {
+            llMaker.GetComponent<llMakerScript>().neighbourhoodList.Add(x);
+            llMaker.GetComponent<llMakerScript>().neighbourhoodList.Add(y);
+        } 
+        else {
+            for (int i = 0; i < llMaker.GetComponent<llMakerScript>().neighbourhoodList.Count; i += 2)
+            {
+                if (llMaker.GetComponent<llMakerScript>().neighbourhoodList[i] == x && llMaker.GetComponent<llMakerScript>().neighbourhoodList[i + 1] == y)
+                {
+                    llMaker.GetComponent<llMakerScript>().neighbourhoodList.RemoveAt(i);
+                    llMaker.GetComponent<llMakerScript>().neighbourhoodList.RemoveAt(i);
+                    break;
+                }
+            }
+        }
+    }
+
+    public void add45Ll (bool val)
+    {
+        int x = 3, y = 4;
+        if (val)
+        {
+            llMaker.GetComponent<llMakerScript>().neighbourhoodList.Add(x);
+            llMaker.GetComponent<llMakerScript>().neighbourhoodList.Add(y);
+        } 
+        else {
+            for (int i = 0; i < llMaker.GetComponent<llMakerScript>().neighbourhoodList.Count; i += 2)
+            {
+                if (llMaker.GetComponent<llMakerScript>().neighbourhoodList[i] == x && llMaker.GetComponent<llMakerScript>().neighbourhoodList[i + 1] == y)
+                {
+                    llMaker.GetComponent<llMakerScript>().neighbourhoodList.RemoveAt(i);
+                    llMaker.GetComponent<llMakerScript>().neighbourhoodList.RemoveAt(i);
+                    break;
+                }
+            }
+        }
+    }
+
+    public void add55Ll (bool val)
+    {
+        int x = 4, y = 4;
+        if (val)
+        {
+            llMaker.GetComponent<llMakerScript>().neighbourhoodList.Add(x);
+            llMaker.GetComponent<llMakerScript>().neighbourhoodList.Add(y);
+        } 
+        else {
+            for (int i = 0; i < llMaker.GetComponent<llMakerScript>().neighbourhoodList.Count; i += 2)
+            {
+                if (llMaker.GetComponent<llMakerScript>().neighbourhoodList[i] == x && llMaker.GetComponent<llMakerScript>().neighbourhoodList[i + 1] == y)
+                {
+                    llMaker.GetComponent<llMakerScript>().neighbourhoodList.RemoveAt(i);
+                    llMaker.GetComponent<llMakerScript>().neighbourhoodList.RemoveAt(i);
+                    break;
+                }
+            }
+        }
+    }
+
     public void runLlExample1 ()
     {
         llMaker.GetComponent<llMakerScript>().len = 100;
@@ -280,13 +785,6 @@ public class buttonManagerScript : MonoBehaviour
     public void runLlExample2 ()
     {
         llMaker.GetComponent<llMakerScript>().len = 100;
-        llMaker.GetComponent<llMakerScript>().born.Add(2);
-        runLl();
-    }
-
-    public void runLlExample3 ()
-    {
-        llMaker.GetComponent<llMakerScript>().len = 100;
         llMaker.GetComponent<llMakerScript>().born.Add(3);
         llMaker.GetComponent<llMakerScript>().survive.Add(0);
         llMaker.GetComponent<llMakerScript>().survive.Add(1);
@@ -298,5 +796,66 @@ public class buttonManagerScript : MonoBehaviour
         llMaker.GetComponent<llMakerScript>().survive.Add(7);
         llMaker.GetComponent<llMakerScript>().survive.Add(8);
         runLl();
+    }
+
+    public void runLlExample3 ()
+    {
+        llMaker.GetComponent<llMakerScript>().len = 100;
+        add22Ll(false);
+        add42Ll(false);
+        add24Ll(false);
+        add44Ll(false);
+        llMaker.GetComponent<llMakerScript>().born.Add(2);
+        llMaker.GetComponent<llMakerScript>().survive.Add(2);
+        llMaker.GetComponent<llMakerScript>().survive.Add(1);
+        runLl();
+    }
+
+    public void runLlExample4 ()
+    {
+        llMaker.GetComponent<llMakerScript>().len = 100;
+        add11Ll(true);
+        add31Ll(true);
+        add51Ll(true);
+        add32Ll(false);
+        add13Ll(true);
+        add23Ll(false);
+        add43Ll(false);
+        add53Ll(true);
+        add34Ll(false);
+        add15Ll(true);
+        add35Ll(true);
+        add55Ll(true);
+        llMaker.GetComponent<llMakerScript>().born.Add(3);
+        llMaker.GetComponent<llMakerScript>().survive.Add(3);
+        llMaker.GetComponent<llMakerScript>().survive.Add(2);
+        llMaker.GetComponent<llMakerScript>().survive.Add(6);
+        runLl();
+    }
+
+    public void openWWUi ()
+    {
+        wwUi.SetActive(true);
+        mainUI.SetActive(false);
+    }
+
+    public void runWw ()
+    {
+        wwUi.SetActive(false);
+        wwMaker.SetActive(true);
+    }
+
+    public void checkLengthWw (string str)
+    {
+        if (!int.TryParse(str, out int n) || n < 5)
+        {
+            Debug.Log("Invalid input for WW length. Please enter an integer greater than or equal to 5.");
+        }
+        else wwMaker.GetComponent<wwMakerScript>().len = n;
+    }
+
+    public void reset ()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
