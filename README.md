@@ -1,5 +1,6 @@
 # automatown
 a program that simulates and teaches about multiple different cellular automata.
+made for the stardance challenge
 <img width="469" height="263" alt="cooler pattern" src="https://github.com/user-attachments/assets/13e249d4-5ed8-4555-a840-cadf5345becb" />
 <br>
 <a href="https://vapor-wav.itch.io/automatown" style="font-size:260px"><b>Try it here!</b></a>
