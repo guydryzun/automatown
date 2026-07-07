@@ -11,4 +11,4 @@ a program that simulates and teaches about multiple different cellular automata.
 </ul>
 
 # technicallities
-automatown is built entirely in unity, using basic unity sprites/fonts. The simulation is made 
+automatown is built entirely in unity, using basic unity sprites/fonts.
