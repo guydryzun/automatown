@@ -1,2 +1,14 @@
 # automatown
-where you can see all kinds of cellular automatas live (and die). A handy tool for learning about, playing with and exploring cellualar automatas. 
+a program that simulates and teaches about multiple different cellular automata.
+<img width="469" height="263" alt="cooler pattern" src="https://github.com/user-attachments/assets/13e249d4-5ed8-4555-a840-cadf5345becb" />
+<br>
+<a href="https://vapor-wav.itch.io/automatown" style="font-size:260px"><b>Try it here!</b></a>
+# the project includes:
+<ul>
+  <li>Simulations for Conway's game of life, life-likes (including custom neighbourhoods too), wireworld and Wolfram's elementary cellular automata</li>
+  <li>Helpful guides providing basic insight and fun facts for newcomers to the field, and even examples that you can play around with</li>
+  <li>Limitless visibility, being able to move at different speeds, zoom in and out at different speeds, change simulation speed, simulate once and reset</li>
+</ul>
+
+# technicallities
+automatown is built entirely in unity, using basic unity sprites/fonts. The simulation is made 
