@@ -5,20 +5,28 @@ public class wwMakerScript : MonoBehaviour
     public int[][] world = null, origin = null;
     private GameObject[][] block;
     public GameObject objectPool, cam;
-    public int len;
+    public int len, current = 1;
     private float timer = 0f, speed = 0.5f;
-    private bool isRunning = false;
+    public bool isRunning = false;
 
 
 
     void Start()
     {
+        origin = new int[len][];
+        for (int i = 0; i < len; i++) origin[i] = new int[len];
         if (world == null)
         {
             world = new int[len][];
             for (int i = 0; i < len; i++) world[i] = new int[len];
         }
-        origin = world;
+        else
+        {
+            for (int i = 0; i < len; i++)
+            {
+                for (int j = 0; j < len; j++) origin[i][j] = world[i][j];
+            }
+        }
         block = new GameObject[len][];
         for (int i = 0; i < len; i++) block[i] = new GameObject[len];
         for (int i = 0; i < len; i++)
@@ -74,33 +82,24 @@ public class wwMakerScript : MonoBehaviour
             {
                 for (int j = 0; j < len; j++)
                 {
-                    if (world[i][j] == 1) block[i][j].GetComponent<SpriteRenderer>().color = Color.black;
-                    else block[i][j].GetComponent<SpriteRenderer>().color = Color.white;
+                    if (world[j][i] == 0) block[j][i].GetComponent<SpriteRenderer>().color = Color.black;
+                    else if (world[j][i] == 1) block[j][i].GetComponent<SpriteRenderer>().color = Color.yellow;
+                    else if (world[j][i] == 2) block[j][i].GetComponent<SpriteRenderer>().color = Color.blue;
+                    else block[j][i].GetComponent<SpriteRenderer>().color = Color.red;
                 }
             }
         }
         if (Input.GetKeyDown(KeyCode.R))
         {
-            bool dif = false;
             for (int i = 0; i < len; i++)
             {
                 for (int j = 0; j < len; j++)
                 {
-                    if (world[j][i] != origin[j][i]) dif = true;
                     world[j][i] = origin[j][i];
-                    if (world[j][i] == 1) block[j][i].GetComponent<SpriteRenderer>().color = Color.black;
-                    else block[j][i].GetComponent<SpriteRenderer>().color = Color.white;
-                }
-            }
-            if (!dif)
-            {
-                for (int i = 0; i < len; i++)
-                {
-                    for (int j = 0; j < len; j++)
-                    {
-                        world[j][i] = 0;
-                        block[j][i].GetComponent<SpriteRenderer>().color = Color.white;
-                    }
+                    if (world[j][i] == 0) block[j][i].GetComponent<SpriteRenderer>().color = Color.black;
+                    else if (world[j][i] == 1) block[j][i].GetComponent<SpriteRenderer>().color = Color.yellow;
+                    else if (world[j][i] == 2) block[j][i].GetComponent<SpriteRenderer>().color = Color.blue;
+                    else block[j][i].GetComponent<SpriteRenderer>().color = Color.red;
                 }
             }
         }

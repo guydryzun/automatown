@@ -9,17 +9,25 @@ public class llMakerScript : MonoBehaviour
     public GameObject objectPool, cam;
     public int len;
     private float timer = 0f, speed = 0.5f;
-    private bool isRunning = false;
+    public bool isRunning = false;
 
 
     private void Start()
     {
+        origin = new int[len][];
+        for (int i = 0; i < len; i++) origin[i] = new int[len];
         if (world == null)
         {
             world = new int[len][];
             for (int i = 0; i < len; i++) world[i] = new int[len];
         }
-        origin = world;
+        else
+        {
+            for (int i = 0; i < len; i++)
+            {
+                for (int j = 0; j < len; j++) origin[i][j] = world[i][j];
+            }
+        }
         neighbourhood = new int[5][];
         for (int i = 0; i < 5; i++) neighbourhood[i] = new int[5];
         for (int i = 0; i < neighbourhoodList.Count; i += 2)
@@ -82,26 +90,13 @@ public class llMakerScript : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.R))
         {
-            bool dif = false;
             for (int i = 0; i < len; i++)
             {
                 for (int j = 0; j < len; j++)
                 {
-                    if (world[j][i] != origin[j][i]) dif = true;
                     world[j][i] = origin[j][i];
                     if (world[j][i] == 1) block[j][i].GetComponent<SpriteRenderer>().color = Color.black;
                     else block[j][i].GetComponent<SpriteRenderer>().color = Color.white;
-                }
-            }
-            if (!dif)
-            {
-                for (int i = 0; i < len; i++)
-                {
-                    for (int j = 0; j < len; j++)
-                    {
-                        world[j][i] = 0;
-                        block[j][i].GetComponent<SpriteRenderer>().color = Color.white;
-                    }
                 }
             }
         }

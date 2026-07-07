@@ -82,7 +82,7 @@ public class makerScript : MonoBehaviour
                 cam.transform.position = new Vector3(cam.transform.position.x - 0.1f, cam.transform.position.y, cam.transform.position.z);
             }
         }
-        if (Input.GetKey(KeyCode.UpArrow))
+        if (Input.GetKey(KeyCode.UpArrow) && loading > 0)
         {
             if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift)) 
             {
@@ -93,7 +93,7 @@ public class makerScript : MonoBehaviour
                 cam.transform.position = new Vector3(cam.transform.position.x, cam.transform.position.y + 0.1f, cam.transform.position.z);
             }
         }
-        if (Input.GetKey(KeyCode.DownArrow))
+        if (Input.GetKey(KeyCode.DownArrow) && loading > 0)
         {
             if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift)) 
             {
@@ -104,7 +104,7 @@ public class makerScript : MonoBehaviour
                 cam.transform.position = new Vector3(cam.transform.position.x, cam.transform.position.y - 0.1f, cam.transform.position.z);
             }
         }
-        if (Input.GetKey(KeyCode.Q))
+        if (Input.GetKey(KeyCode.Q) && loading > 0)
         {
             if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
             {
@@ -115,7 +115,7 @@ public class makerScript : MonoBehaviour
                 cam.GetComponent<Camera>().orthographicSize += 0.1f;
             }
         }
-        if (Input.GetKey(KeyCode.E))
+        if (Input.GetKey(KeyCode.E) && loading > 0)
         {
             if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
             {

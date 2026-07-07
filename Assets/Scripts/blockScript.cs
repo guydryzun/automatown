@@ -5,7 +5,6 @@ public class blockScript : MonoBehaviour
 {
     public static Boolean before = true;
     public static int pressed = -1;
-    public static String blockType = "cond";
     private bool switched = false;
     [SerializeField] private makerScript ecaMaker;
     [SerializeField] private golMakerScript golMaker;
@@ -16,7 +15,7 @@ public class blockScript : MonoBehaviour
     void Update()
     {
         
-        if (!before)
+        if (!before && type == 1)
         {
             Destroy(GetComponent<BoxCollider2D>());
             Destroy(GetComponent<Rigidbody2D>());
@@ -24,6 +23,7 @@ public class blockScript : MonoBehaviour
             Destroy(GetComponent<blockScript>());
         }
         if (pressed == -1 && switched) switched = false;
+        if (type == 4) before = false;
     }
 
     private void OnMouseDown()
@@ -64,23 +64,20 @@ public class blockScript : MonoBehaviour
         {
             if (pressed == 1 && !switched)
             {
-                if (blockType.Equals("cond")) {
+                if (wwMaker.current == 1) {
                     GetComponent<SpriteRenderer>().color = Color.yellow;
-                    wwMaker.world[pos][pos2] = 1;
                 }
-                else if (blockType.Equals("head")) 
+                else if (wwMaker.current == 2) 
                 {
                     GetComponent<SpriteRenderer>().color = Color.blue;
-                    wwMaker.world[pos][pos2] = 2;
                 }
-                else if (blockType.Equals("tail")) {
+                else if (wwMaker.current == 3) {
                     GetComponent<SpriteRenderer>().color = Color.red;
-                    wwMaker.world[pos][pos2] = 3;
                 }
                 else {
                     GetComponent<SpriteRenderer>().color = Color.black;
-                    wwMaker.world[pos][pos2] = 0;
                 }
+                wwMaker.world[pos][pos2] = wwMaker.current;
                 switched = true;
             }
         }

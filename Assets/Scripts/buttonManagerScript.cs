@@ -3,8 +3,11 @@ using UnityEngine.SceneManagement;
 
 public class buttonManagerScript : MonoBehaviour
 {
-    [SerializeField] private GameObject mainUI, ecaUI, golUI, llUI, wwUi;
+    [SerializeField] private GameObject cam;
+    [SerializeField] private GameObject mainUI, ecaUI, ecaRUI, ecaMUI, golUI, golRUI, llUI, wwUi, wwRUI, wwMUi;
     [SerializeField] private GameObject ecaMaker, golMaker, llMaker, wwMaker;
+    [SerializeField] private GameObject textManager;
+    private string running = "";
 
     public void openEcaUi ()
     {
@@ -15,7 +18,10 @@ public class buttonManagerScript : MonoBehaviour
     public void runEca ()
     {
         ecaUI.SetActive(false);
+        ecaRUI.SetActive(true);
         ecaMaker.SetActive(true);
+        cam.transform.position = new Vector3 (0, 1.3f, -10);
+        running = "eca";
     }
 
     public void checkRuleEca (string str)
@@ -87,7 +93,9 @@ public class buttonManagerScript : MonoBehaviour
     public void runGol ()
     {
         golUI.SetActive(false);
+        golRUI.SetActive(true);
         golMaker.SetActive(true);
+        running = "gol";
     }
 
     public void checkLengthGol (string str)
@@ -153,7 +161,9 @@ public class buttonManagerScript : MonoBehaviour
     public void runLl ()
     {
         llUI.SetActive(false);
+        golRUI.SetActive(true);
         llMaker.SetActive(true);
+        running = "ll";
     }
 
     public void addB0LL (bool val)
@@ -842,7 +852,9 @@ public class buttonManagerScript : MonoBehaviour
     public void runWw ()
     {
         wwUi.SetActive(false);
+        wwRUI.SetActive(true);
         wwMaker.SetActive(true);
+        running = "ww";
     }
 
     public void checkLengthWw (string str)
@@ -852,6 +864,348 @@ public class buttonManagerScript : MonoBehaviour
             Debug.Log("Invalid input for WW length. Please enter an integer greater than or equal to 5.");
         }
         else wwMaker.GetComponent<wwMakerScript>().len = n;
+    }
+
+    public void setWW0 ()
+    {
+        wwMaker.GetComponent<wwMakerScript>().current = 0;
+        wwRUI.transform.Find("underline").GetComponent<RectTransform>().anchoredPosition  = new Vector3(-400, 415, 0);
+    }
+
+    public void setWW1 ()
+    {
+        wwMaker.GetComponent<wwMakerScript>().current = 1;
+        wwRUI.transform.Find("underline").GetComponent<RectTransform>().anchoredPosition  = new Vector3(-300, 415, 0);
+    }
+
+    public void setWW2 ()
+    {
+        wwMaker.GetComponent<wwMakerScript>().current = 2;
+        wwRUI.transform.Find("underline").GetComponent<RectTransform>().anchoredPosition  = new Vector3(-200, 415, 0);
+    }
+
+    public void setWW3 ()
+    {
+        wwMaker.GetComponent<wwMakerScript>().current = 3;
+       wwRUI.transform.Find("underline").GetComponent<RectTransform>().anchoredPosition  = new Vector3(-100, 415, 0);
+    }
+
+    public void runWWExample1 ()
+    {
+        wwMaker.GetComponent<wwMakerScript>().len = 100;
+        int[][] exampleWorld = new int[100][];
+        for (int i = 0; i < 100; i++) exampleWorld[i] = new int[100];
+        exampleWorld[50][50] = 2;
+        exampleWorld[50][46] = 1;
+        exampleWorld[51][51] = 1;
+        exampleWorld[51][49] = 3;
+        exampleWorld[51][46] = 1;
+        exampleWorld[52][51] = 1;
+        exampleWorld[52][49] = 1;
+        exampleWorld[52][46] = 1;
+        exampleWorld[53][51] = 1;
+        exampleWorld[53][49] = 1;
+        exampleWorld[53][46] = 1;
+        exampleWorld[54][51] = 1;
+        exampleWorld[54][49] = 1;
+        exampleWorld[54][46] = 1;
+        exampleWorld[55][50] = 1;
+        exampleWorld[55][46] = 1;
+        exampleWorld[56][50] = 1;
+        exampleWorld[56][46] = 1;
+        exampleWorld[57][51] = 1;
+        exampleWorld[57][50] = 1;
+        exampleWorld[57][49] = 1;
+        exampleWorld[57][47] = 1;
+        exampleWorld[57][46] = 1;
+        exampleWorld[57][45] = 1;
+        exampleWorld[58][51] = 1;
+        exampleWorld[58][49] = 1;
+        exampleWorld[58][47] = 1;
+        exampleWorld[58][45] = 1;
+        exampleWorld[59][50] = 1;
+        exampleWorld[59][46] = 1;
+        exampleWorld[60][50] = 1;
+        exampleWorld[60][46] = 2;
+        exampleWorld[61][50] = 1;
+        exampleWorld[61][47] = 1;
+        exampleWorld[61][45] = 3;
+        exampleWorld[62][50] = 1;
+        exampleWorld[62][47] = 1;
+        exampleWorld[62][45] = 1;
+        exampleWorld[63][50] = 1;
+        exampleWorld[63][47] = 1;
+        exampleWorld[63][45] = 1;
+        exampleWorld[64][50] = 1;
+        exampleWorld[64][47] = 1;
+        exampleWorld[64][45] = 1;
+        exampleWorld[65][50] = 1;
+        exampleWorld[65][46] = 1;
+        wwMaker.GetComponent<wwMakerScript>().world = exampleWorld;
+        runWw();
+    }
+
+    public void runWWExample2 ()
+    {
+        wwMaker.GetComponent<wwMakerScript>().len = 100;
+        int[][] exampleWorld = new int[100][];
+        for (int i = 0; i < 100; i++) exampleWorld[i] = new int[100];
+        exampleWorld[52][50] = 2;
+        exampleWorld[53][49] = 1;
+        exampleWorld[53][51] = 3;
+        exampleWorld[54][49] = 3;
+        exampleWorld[54][51] = 1;
+        exampleWorld[55][50] = 2;
+        exampleWorld[56][50] = 1;
+        exampleWorld[57][50] = 1;
+        exampleWorld[58][49] = 1;
+        exampleWorld[58][52] = 3;
+        exampleWorld[58][53] = 1;
+        exampleWorld[59][49] = 1;
+        exampleWorld[59][51] = 2;
+        exampleWorld[59][53] = 2;
+        exampleWorld[60][50] = 1;
+        exampleWorld[60][51] = 2;
+        exampleWorld[60][52] = 3;
+        exampleWorld[60][53] = 1;
+        exampleWorld[61][51] = 2;
+        exampleWorld[61][52] = 3;
+        exampleWorld[62][50] = 1;
+        exampleWorld[63][50] = 1;
+        exampleWorld[64][50] = 1;
+        exampleWorld[65][50] = 1;
+        exampleWorld[66][50] = 1;
+        exampleWorld[67][50] = 1;
+        exampleWorld[51][40] = 3;
+        exampleWorld[52][40] = 2;
+        exampleWorld[53][40] = 1;
+        exampleWorld[54][40] = 3;
+        exampleWorld[55][40] = 2;
+        exampleWorld[56][40] = 1;
+        exampleWorld[57][40] = 1;
+        exampleWorld[58][39] = 1;
+        exampleWorld[58][42] = 3;
+        exampleWorld[58][43] = 1;
+        exampleWorld[59][39] = 1;
+        exampleWorld[59][41] = 2;
+        exampleWorld[59][43] = 2;
+        exampleWorld[60][40] = 1;
+        exampleWorld[60][41] = 2;
+        exampleWorld[60][42] = 3;
+        exampleWorld[60][43] = 1;
+        exampleWorld[61][41] = 2;
+        exampleWorld[61][42] = 3;
+        exampleWorld[62][40] = 1;
+        exampleWorld[63][40] = 1;
+        exampleWorld[64][40] = 1;
+        exampleWorld[65][40] = 1;
+        exampleWorld[66][40] = 1;
+        exampleWorld[67][40] = 1;
+        wwMaker.GetComponent<wwMakerScript>().world = exampleWorld;
+        runWw();
+    }
+
+    public void runWWExample3 ()
+    {
+        wwMaker.GetComponent<wwMakerScript>().len = 100;
+        int[][] exampleWorld = new int[100][];
+        for (int i = 0; i < 100; i++) exampleWorld[i] = new int[100];
+        exampleWorld[50][50] = 2;
+        exampleWorld[50][54] = 2;
+        exampleWorld[51][49] = 1;
+        exampleWorld[51][51] = 3;
+        exampleWorld[51][53] = 1;
+        exampleWorld[51][55] = 3;
+        exampleWorld[52][49] = 1;
+        exampleWorld[52][51] = 1;
+        exampleWorld[52][53] = 1;
+        exampleWorld[52][55] = 1;
+        exampleWorld[53][49] = 1;
+        exampleWorld[53][51] = 1;
+        exampleWorld[53][53] = 1;
+        exampleWorld[53][55] = 1;
+        exampleWorld[54][49] = 1;
+        exampleWorld[54][51] = 1;
+        exampleWorld[54][53] = 1;
+        exampleWorld[54][55] = 1;
+        exampleWorld[55][50] = 1;
+        exampleWorld[55][54] = 1;
+        exampleWorld[56][50] = 1;
+        exampleWorld[56][54] = 1;
+        exampleWorld[58][50] = 1;
+        exampleWorld[58][52] = 1;
+        exampleWorld[58][54] = 1;
+        exampleWorld[59][51] = 1;
+        exampleWorld[59][52] = 1;
+        exampleWorld[59][53] = 1;
+        exampleWorld[60][52] = 1;
+        exampleWorld[61][52] = 1;
+        exampleWorld[62][52] = 1;
+        exampleWorld[63][52] = 1;
+        exampleWorld[50][60] = 2;
+        exampleWorld[50][66] = 2;
+        exampleWorld[51][59] = 1;
+        exampleWorld[51][61] = 3;
+        exampleWorld[51][65] = 1;
+        exampleWorld[51][67] = 3;
+        exampleWorld[52][59] = 1;
+        exampleWorld[52][61] = 1;
+        exampleWorld[52][65] = 1;
+        exampleWorld[52][67] = 1;
+        exampleWorld[53][59] = 1;
+        exampleWorld[53][61] = 1;
+        exampleWorld[53][65] = 1;
+        exampleWorld[53][67] = 1;
+        exampleWorld[54][59] = 1;
+        exampleWorld[54][61] = 1;
+        exampleWorld[54][65] = 1;
+        exampleWorld[54][67] = 1;
+        exampleWorld[55][60] = 1;
+        exampleWorld[55][66] = 1;
+        exampleWorld[57][60] = 1;
+        exampleWorld[57][66] = 1;
+        exampleWorld[58][60] = 1;
+        exampleWorld[58][62] = 1;
+        exampleWorld[58][63] = 1;
+        exampleWorld[58][64] = 1;
+        exampleWorld[58][66] = 1;
+        exampleWorld[59][61] = 1;
+        exampleWorld[59][62] = 1;
+        exampleWorld[59][64] = 1;
+        exampleWorld[59][65] = 1;
+        exampleWorld[60][62] = 1;
+        exampleWorld[60][63] = 1;
+        exampleWorld[60][64] = 1;
+        exampleWorld[61][62] = 1;
+        exampleWorld[61][63] = 1;
+        exampleWorld[61][64] = 1;
+        exampleWorld[62][63] = 1;
+        exampleWorld[63][63] = 1;
+        exampleWorld[64][63] = 1;
+        exampleWorld[65][63] = 1;
+        wwMaker.GetComponent<wwMakerScript>().world = exampleWorld;
+        runWw();
+    }
+
+    public void openWWManu ()
+    {
+        if (running.Equals("ww"))
+        {
+            wwMaker.GetComponent<wwMakerScript>().isRunning = false;
+            wwMaker.SetActive(false);
+            wwRUI.SetActive(false);
+            wwMUi.SetActive(true);
+        }
+        else if (running.Equals("gol"))
+        {
+            golMaker.GetComponent<golMakerScript>().isRunning = false;
+            golMaker.SetActive(false);
+            golRUI.SetActive(false);
+            wwMUi.SetActive(true);
+        }
+        else if (running.Equals("ll"))
+        {
+            llMaker.GetComponent<llMakerScript>().isRunning = false;
+            llMaker.SetActive(false);
+            golRUI.SetActive(false);
+            wwMUi.SetActive(true);
+        }
+        else if (running.Equals("eca"))
+        {
+            ecaRUI.SetActive(false);
+            ecaMUI.SetActive(true);
+        }
+        cam.transform.position = new Vector3 (cam.transform.position.x, cam.transform.position.y, 0);
+    }
+
+    public void closeWWManu ()
+    {
+        if (running.Equals("ww"))
+        {
+            wwMaker.SetActive(true);
+            wwRUI.SetActive(true);
+            wwMUi.SetActive(false);
+        }
+        else if (running.Equals("gol"))
+        {
+            golMaker.SetActive(true);
+            golRUI.SetActive(true);
+            wwMUi.SetActive(false);
+        }
+        else if (running.Equals("ll"))
+        {
+            llMaker.SetActive(true);
+            golRUI.SetActive(true);
+            wwMUi.SetActive(false);
+        }
+        else if (running.Equals("eca"))
+        {
+            ecaRUI.SetActive(true);
+            ecaMUI.SetActive(false);
+        }
+        cam.transform.position = new Vector3 (cam.transform.position.x, cam.transform.position.y, -10);
+    }
+
+    public void closeText ()
+    {
+        foreach (GameObject text in textManager.GetComponent<textManagerScript>().texts)
+        {
+            text.SetActive(false);
+        }
+        textManager.GetComponent<textManagerScript>().nextButton.SetActive(false);
+        textManager.GetComponent<textManagerScript>().lastButton.SetActive(false);
+        textManager.SetActive(false);
+        mainUI.SetActive(true);
+    }
+
+    public void openText0 ()
+    {
+        mainUI.SetActive(false);
+        textManager.SetActive(true);
+        textManager.GetComponent<textManagerScript>().scene = 0;
+        textManager.GetComponent<textManagerScript>().currentTextIndex = 0;
+        textManager.GetComponent<textManagerScript>().texts[0].SetActive(true);
+        textManager.GetComponent<textManagerScript>().nextButton.SetActive(true);
+    }
+
+    public void openText1 ()
+    {
+        mainUI.SetActive(false);
+        textManager.SetActive(true);
+        textManager.GetComponent<textManagerScript>().scene = 2;
+        textManager.GetComponent<textManagerScript>().currentTextIndex = textManager.GetComponent<textManagerScript>().lengths[0];
+        textManager.GetComponent<textManagerScript>().texts[textManager.GetComponent<textManagerScript>().lengths[0]].SetActive(true);
+        textManager.GetComponent<textManagerScript>().nextButton.SetActive(true);
+    }
+
+    public void openText2 ()
+    {
+        mainUI.SetActive(false);
+        textManager.SetActive(true);
+        textManager.GetComponent<textManagerScript>().scene = 4;
+        textManager.GetComponent<textManagerScript>().currentTextIndex = textManager.GetComponent<textManagerScript>().lengths[2];
+        textManager.GetComponent<textManagerScript>().texts[textManager.GetComponent<textManagerScript>().lengths[2]].SetActive(true);
+        textManager.GetComponent<textManagerScript>().nextButton.SetActive(true);
+    }
+
+    public void openText3 ()
+    {
+        mainUI.SetActive(false);
+        textManager.SetActive(true);
+        textManager.GetComponent<textManagerScript>().scene = 6;
+        textManager.GetComponent<textManagerScript>().currentTextIndex = textManager.GetComponent<textManagerScript>().lengths[4];
+        textManager.GetComponent<textManagerScript>().texts[textManager.GetComponent<textManagerScript>().lengths[4]].SetActive(true);
+        textManager.GetComponent<textManagerScript>().nextButton.SetActive(true);
+    }
+
+    public void openText4 ()
+    {
+        mainUI.SetActive(false);
+        textManager.SetActive(true);
+        textManager.GetComponent<textManagerScript>().scene = 8;
+        textManager.GetComponent<textManagerScript>().currentTextIndex = textManager.GetComponent<textManagerScript>().lengths[6];
+        textManager.GetComponent<textManagerScript>().texts[textManager.GetComponent<textManagerScript>().lengths[6]].SetActive(true);
+        textManager.GetComponent<textManagerScript>().nextButton.SetActive(true);
     }
 
     public void reset ()
