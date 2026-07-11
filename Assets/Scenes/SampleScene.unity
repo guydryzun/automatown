@@ -1157,7 +1157,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Conway''s game of life is the most well-known
 
-    cellular automata,
+    cellular automaton,
     that made the field popular in
 
     the first place (even though there were cellular
@@ -7481,8 +7481,10 @@ MonoBehaviour:
 
     even one that simulates Conway''s
 
-    Game of Life,
-    a sort of mechanical fractal!'
+    Game of Life!
+    You can simulate the game of
+
+    life in the game of life!'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -27427,7 +27429,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'and then take digits, put them into one number
+  m_text: 'and then take the digits, put them into one number
 
     in this case 00010110
 
@@ -35022,7 +35024,7 @@ MonoBehaviour:
   m_text: 'There isn''t really one name for this family of cellular
 
     automata,
-    but phrases like "similar to life" or life-like
+    but phrases like "similar to life" or "life-like"
 
     work. automata from this
     family are notated by
@@ -41497,8 +41499,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "I would now urge you to go read about \nthe elementary cellular automata
-    to \nfurther explore the topic and mess see how\nsuch simple ideas can lead to
-    amazing creations"
+    to \nfurther explore the topic and to mess around with \nthe simulations to see
+    for yourself how they work"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -48618,7 +48620,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "Conway's game of life was so popular, that a lot of\nresearch and effort
-    had been put on cellular \nautomatawhich are similar to it, in the sense that
+    had been put on cellular \nautomata which are similar to it, in the sense that
     they \nare 2 dimensional, use the moore neighbourhood and depend solely on the
     amount of living neighbours, and \nnot the exact configuration."
   m_isRightToLeft: 0
@@ -48756,10 +48758,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'which means the rules determine what the cell
+  m_text: 'which means the rules determine what the middle cell
 
-    will turn into in each
-    of these 8 situations:'
+    will turn into
+    in each of these 8 situations:'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -52289,7 +52291,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "The elementary cellular automata are the most \nbasic cellular automata,
-    consisting of a 1 dimentional \ngrid where each cell looks only at its two immidiate
+    consisting of a 1 dimentional \ngrid where each cell looks only at its two immediate
     neighbours and itself"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -56751,7 +56753,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "these aren't any just normal squares, they're alive!\nevery now and then,
+  m_text: "but these aren't any normal squares, they're alive!\nevery now and then,
     they may die, or birth new ones.\nthis all happens according to certain rules,
     dictating\nwhen an alive cell will survive, and when a dead\ncell will be born.
     usually dead cells are white and \nalive cells are black."
@@ -68075,7 +68077,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "in a cellular automata there is \na grid of squares with different colors."
+  m_text: "in cellular automata there is \na grid of squares with different colors."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
