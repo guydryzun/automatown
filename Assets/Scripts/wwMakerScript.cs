@@ -8,8 +8,7 @@ public class wwMakerScript : MonoBehaviour
     public int len, current = 1;
     private float timer = 0f, speed = 0.5f;
     public bool isRunning = false;
-
-
+    private Color yellow = new Color(1f, 0.8627450980392157f, 0.2901960784313726f), blue = new Color(0.396078431372549f, 0.615686274509804f, 0.9490196078431372f), red = new Color(0.9725490196078431f, 0.25882352941176473f, 0.25882352941176473f);
 
     void Start()
     {
@@ -42,9 +41,9 @@ public class wwMakerScript : MonoBehaviour
                 block[j][i].GetComponent<blockScript>().pos = j;
                 block[j][i].GetComponent<blockScript>().pos2 = i;
                 if (world[j][i] == 0) block[j][i].GetComponent<SpriteRenderer>().color = Color.black;
-                else if (world[j][i] == 1) block[j][i].GetComponent<SpriteRenderer>().color = Color.yellow;
-                else if (world[j][i] == 2) block[j][i].GetComponent<SpriteRenderer>().color = Color.blue;
-                else block[j][i].GetComponent<SpriteRenderer>().color = Color.red;
+                else if (world[j][i] == 1) block[j][i].GetComponent<SpriteRenderer>().color = yellow;
+                else if (world[j][i] == 2) block[j][i].GetComponent<SpriteRenderer>().color = blue;
+                else block[j][i].GetComponent<SpriteRenderer>().color = red;
 
             }
         }
@@ -67,9 +66,9 @@ public class wwMakerScript : MonoBehaviour
                     for (int j = 0; j < len; j++)
                     {
                         if (world[j][i] == 0) block[j][i].GetComponent<SpriteRenderer>().color = Color.black;
-                        else if (world[j][i] == 1) block[j][i].GetComponent<SpriteRenderer>().color = Color.yellow;
-                        else if (world[j][i] == 2) block[j][i].GetComponent<SpriteRenderer>().color = Color.blue;
-                        else block[j][i].GetComponent<SpriteRenderer>().color = Color.red;
+                        else if (world[j][i] == 1) block[j][i].GetComponent<SpriteRenderer>().color = yellow;
+                        else if (world[j][i] == 2) block[j][i].GetComponent<SpriteRenderer>().color = blue;
+                        else block[j][i].GetComponent<SpriteRenderer>().color = red;
                     }
                 }
                 timer = 0f;
@@ -83,9 +82,9 @@ public class wwMakerScript : MonoBehaviour
                 for (int j = 0; j < len; j++)
                 {
                     if (world[j][i] == 0) block[j][i].GetComponent<SpriteRenderer>().color = Color.black;
-                    else if (world[j][i] == 1) block[j][i].GetComponent<SpriteRenderer>().color = Color.yellow;
-                    else if (world[j][i] == 2) block[j][i].GetComponent<SpriteRenderer>().color = Color.blue;
-                    else block[j][i].GetComponent<SpriteRenderer>().color = Color.red;
+                    else if (world[j][i] == 1) block[j][i].GetComponent<SpriteRenderer>().color = yellow;
+                    else if (world[j][i] == 2) block[j][i].GetComponent<SpriteRenderer>().color = blue;
+                    else block[j][i].GetComponent<SpriteRenderer>().color = red;
                 }
             }
         }
@@ -97,9 +96,9 @@ public class wwMakerScript : MonoBehaviour
                 {
                     world[j][i] = origin[j][i];
                     if (world[j][i] == 0) block[j][i].GetComponent<SpriteRenderer>().color = Color.black;
-                    else if (world[j][i] == 1) block[j][i].GetComponent<SpriteRenderer>().color = Color.yellow;
-                    else if (world[j][i] == 2) block[j][i].GetComponent<SpriteRenderer>().color = Color.blue;
-                    else block[j][i].GetComponent<SpriteRenderer>().color = Color.red;
+                    else if (world[j][i] == 1) block[j][i].GetComponent<SpriteRenderer>().color = yellow;
+                    else if (world[j][i] == 2) block[j][i].GetComponent<SpriteRenderer>().color = blue;
+                    else block[j][i].GetComponent<SpriteRenderer>().color = red;
                 }
             }
         }

@@ -4,7 +4,7 @@ public class textManagerScript : MonoBehaviour
 {
     public int currentTextIndex = 0;
     public GameObject[] texts;
-    public GameObject nextButton, lastButton;
+    public GameObject nextButton, lastButton, exitButton;
     public int scene;
     public int[] lengths;
 

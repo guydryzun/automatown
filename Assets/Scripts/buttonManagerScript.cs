@@ -5,14 +5,26 @@ public class buttonManagerScript : MonoBehaviour
 {
     [SerializeField] private GameObject cam;
     [SerializeField] private GameObject mainUI, ecaUI, ecaRUI, ecaMUI, golUI, golRUI, llUI, wwUi, wwRUI, wwMUi;
-    [SerializeField] private GameObject ecaMaker, golMaker, llMaker, wwMaker;
+    [SerializeField] private GameObject ecaMaker, golMaker, llMaker, wwMaker, golTitle;
     [SerializeField] private GameObject textManager;
     private string running = "";
+
+    private void Start()
+    {
+        golTitle.SetActive(true);
+    }
 
     public void openEcaUi ()
     {
         ecaUI.SetActive(true);
         mainUI.SetActive(false);
+        for (int i = 0; i < 100; i++)
+        {
+            for (int j = 0; j < 200; j++)
+            {
+                Destroy(golTitle.GetComponent<titleGolScript>().block[i][j]);
+            }
+        }
     }
 
     public void runEca ()
@@ -57,6 +69,8 @@ public class buttonManagerScript : MonoBehaviour
         ecaMaker.GetComponent<makerScript>().r = 126;
         ecaMaker.GetComponent<makerScript>().len = 300;
         ecaMaker.GetComponent<makerScript>().start = 150;
+        ecaMaker.GetComponent<makerScript>().loading = 1;
+        foreach (GameObject obj in ecaMaker.GetComponent<makerScript>().loadingScreen) obj.SetActive(true);
         runEca();
     }
 
@@ -65,6 +79,8 @@ public class buttonManagerScript : MonoBehaviour
         ecaMaker.GetComponent<makerScript>().r = 110;
         ecaMaker.GetComponent<makerScript>().len = 300;
         ecaMaker.GetComponent<makerScript>().start = 297;
+        ecaMaker.GetComponent<makerScript>().loading = 1;
+        foreach (GameObject obj in ecaMaker.GetComponent<makerScript>().loadingScreen) obj.SetActive(true);
         runEca();
     }
 
@@ -73,6 +89,8 @@ public class buttonManagerScript : MonoBehaviour
         ecaMaker.GetComponent<makerScript>().r = 57;
         ecaMaker.GetComponent<makerScript>().len = 300;
         ecaMaker.GetComponent<makerScript>().start = 150;
+        ecaMaker.GetComponent<makerScript>().loading = 1;
+        foreach (GameObject obj in ecaMaker.GetComponent<makerScript>().loadingScreen) obj.SetActive(true);
         runEca();
     }
 
@@ -81,6 +99,8 @@ public class buttonManagerScript : MonoBehaviour
         ecaMaker.GetComponent<makerScript>().r = 169;
         ecaMaker.GetComponent<makerScript>().len = 300;
         ecaMaker.GetComponent<makerScript>().start = 297;
+        ecaMaker.GetComponent<makerScript>().loading = 1;
+        foreach (GameObject obj in ecaMaker.GetComponent<makerScript>().loadingScreen) obj.SetActive(true);
         runEca();
     }
 
@@ -88,6 +108,13 @@ public class buttonManagerScript : MonoBehaviour
     {
         golUI.SetActive(true);
         mainUI.SetActive(false);
+        for (int i = 0; i < 100; i++)
+        {
+            for (int j = 0; j < 200; j++)
+            {
+                Destroy(golTitle.GetComponent<titleGolScript>().block[i][j]); 
+            }
+        }
     }
 
     public void runGol ()
@@ -149,6 +176,7 @@ public class buttonManagerScript : MonoBehaviour
         exampleWorld[40][26] = 1;
         exampleWorld[40][27] = 1;
         golMaker.GetComponent<golMakerScript>().world = exampleWorld;
+        golMaker.GetComponent<golMakerScript>().isRunning = true;
         runGol();
     }
 
@@ -156,6 +184,13 @@ public class buttonManagerScript : MonoBehaviour
     {
         llUI.SetActive(true);
         mainUI.SetActive(false);
+        for (int i = 0; i < 100; i++)
+        {
+            for (int j = 0; j < 200; j++)
+            {
+                Destroy(golTitle.GetComponent<titleGolScript>().block[i][j]); 
+            }
+        }
     }
 
     public void runLl ()
@@ -847,6 +882,13 @@ public class buttonManagerScript : MonoBehaviour
     {
         wwUi.SetActive(true);
         mainUI.SetActive(false);
+        for (int i = 0; i < 100; i++)
+        {
+            for (int j = 0; j < 200; j++)
+            {
+                Destroy(golTitle.GetComponent<titleGolScript>().block[i][j]); 
+            }
+        }
     }
 
     public void runWw ()
@@ -942,6 +984,7 @@ public class buttonManagerScript : MonoBehaviour
         exampleWorld[65][50] = 1;
         exampleWorld[65][46] = 1;
         wwMaker.GetComponent<wwMakerScript>().world = exampleWorld;
+        wwMaker.GetComponent<wwMakerScript>().isRunning = true;
         runWw();
     }
 
@@ -1002,6 +1045,7 @@ public class buttonManagerScript : MonoBehaviour
         exampleWorld[66][40] = 1;
         exampleWorld[67][40] = 1;
         wwMaker.GetComponent<wwMakerScript>().world = exampleWorld;
+        wwMaker.GetComponent<wwMakerScript>().isRunning = true;
         runWw();
     }
 
@@ -1084,6 +1128,7 @@ public class buttonManagerScript : MonoBehaviour
         exampleWorld[64][63] = 1;
         exampleWorld[65][63] = 1;
         wwMaker.GetComponent<wwMakerScript>().world = exampleWorld;
+        wwMaker.GetComponent<wwMakerScript>().isRunning = true;
         runWw();
     }
 
@@ -1166,6 +1211,14 @@ public class buttonManagerScript : MonoBehaviour
         textManager.GetComponent<textManagerScript>().currentTextIndex = 0;
         textManager.GetComponent<textManagerScript>().texts[0].SetActive(true);
         textManager.GetComponent<textManagerScript>().nextButton.SetActive(true);
+        textManager.GetComponent<textManagerScript>().exitButton.SetActive(true);
+        for (int i = 0; i < 100; i++)
+        {
+            for (int j = 0; j < 200; j++)
+            {
+                Destroy(golTitle.GetComponent<titleGolScript>().block[i][j]);
+            }
+        }
     }
 
     public void openText1 ()
@@ -1176,6 +1229,14 @@ public class buttonManagerScript : MonoBehaviour
         textManager.GetComponent<textManagerScript>().currentTextIndex = textManager.GetComponent<textManagerScript>().lengths[0];
         textManager.GetComponent<textManagerScript>().texts[textManager.GetComponent<textManagerScript>().lengths[0]].SetActive(true);
         textManager.GetComponent<textManagerScript>().nextButton.SetActive(true);
+        textManager.GetComponent<textManagerScript>().exitButton.SetActive(true);
+        for (int i = 0; i < 100; i++)
+        {
+            for (int j = 0; j < 200; j++)
+            {
+                Destroy(golTitle.GetComponent<titleGolScript>().block[i][j]);
+            }
+        }
     }
 
     public void openText2 ()
@@ -1186,6 +1247,14 @@ public class buttonManagerScript : MonoBehaviour
         textManager.GetComponent<textManagerScript>().currentTextIndex = textManager.GetComponent<textManagerScript>().lengths[2];
         textManager.GetComponent<textManagerScript>().texts[textManager.GetComponent<textManagerScript>().lengths[2]].SetActive(true);
         textManager.GetComponent<textManagerScript>().nextButton.SetActive(true);
+        textManager.GetComponent<textManagerScript>().exitButton.SetActive(true);
+        for (int i = 0; i < 100; i++)
+        {
+            for (int j = 0; j < 200; j++)
+            {
+                Destroy(golTitle.GetComponent<titleGolScript>().block[i][j]);
+            }
+        }
     }
 
     public void openText3 ()
@@ -1196,6 +1265,14 @@ public class buttonManagerScript : MonoBehaviour
         textManager.GetComponent<textManagerScript>().currentTextIndex = textManager.GetComponent<textManagerScript>().lengths[4];
         textManager.GetComponent<textManagerScript>().texts[textManager.GetComponent<textManagerScript>().lengths[4]].SetActive(true);
         textManager.GetComponent<textManagerScript>().nextButton.SetActive(true);
+        textManager.GetComponent<textManagerScript>().exitButton.SetActive(true);
+        for (int i = 0; i < 100; i++)
+        {
+            for (int j = 0; j < 200; j++)
+            {
+                Destroy(golTitle.GetComponent<titleGolScript>().block[i][j]); 
+            }
+        }
     }
 
     public void openText4 ()
@@ -1206,6 +1283,14 @@ public class buttonManagerScript : MonoBehaviour
         textManager.GetComponent<textManagerScript>().currentTextIndex = textManager.GetComponent<textManagerScript>().lengths[6];
         textManager.GetComponent<textManagerScript>().texts[textManager.GetComponent<textManagerScript>().lengths[6]].SetActive(true);
         textManager.GetComponent<textManagerScript>().nextButton.SetActive(true);
+        textManager.GetComponent<textManagerScript>().exitButton.SetActive(true);
+        for (int i = 0; i < 100; i++)
+        {
+            for (int j = 0; j < 200; j++)
+            {
+                Destroy(golTitle.GetComponent<titleGolScript>().block[i][j]); 
+            }
+        }
     }
 
     public void reset ()

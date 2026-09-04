@@ -6,9 +6,9 @@ public class makerScript : MonoBehaviour
     [SerializeField] private GameObject block, cam;
     public int len, r, start = 0;
     [SerializeField] private ObjectPool pool;
-    [SerializeField] private GameObject[] loadingScreen;
+    [SerializeField] public GameObject[] loadingScreen;
     public int[] world;
-    private int loading = 0;
+    public int loading = 0;
     public bool edgeWrapping = false;
 
     private void Start()

@@ -4,13 +4,15 @@ using UnityEngine;
 public class blockScript : MonoBehaviour
 {
     public static Boolean before = true;
-    public static int pressed = -1;
-    private bool switched = false;
+    [SerializeField] public static int pressed = -1; //delete the serializeField after debugging is done
+    [SerializeField] private bool switched = false; //delete the serializeField after debugging is done
     [SerializeField] private makerScript ecaMaker;
     [SerializeField] private golMakerScript golMaker;
     [SerializeField] private llMakerScript llMaker;
     [SerializeField] private wwMakerScript wwMaker;
     public int pos, pos2, type;
+    private Color yellow = new Color(1f, 0.8627450980392157f, 0.2901960784313726f), blue = new Color(0.396078431372549f, 0.615686274509804f, 0.9490196078431372f), red = new Color(0.9725490196078431f, 0.25882352941176473f, 0.25882352941176473f);
+
 
     void Update()
     {
@@ -65,14 +67,14 @@ public class blockScript : MonoBehaviour
             if (pressed == 1 && !switched)
             {
                 if (wwMaker.current == 1) {
-                    GetComponent<SpriteRenderer>().color = Color.yellow;
+                    GetComponent<SpriteRenderer>().color = yellow;
                 }
                 else if (wwMaker.current == 2) 
                 {
-                    GetComponent<SpriteRenderer>().color = Color.blue;
+                    GetComponent<SpriteRenderer>().color = blue;
                 }
                 else if (wwMaker.current == 3) {
-                    GetComponent<SpriteRenderer>().color = Color.red;
+                    GetComponent<SpriteRenderer>().color = red;
                 }
                 else {
                     GetComponent<SpriteRenderer>().color = Color.black;
